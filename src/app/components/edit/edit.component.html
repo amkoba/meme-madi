@@ -1,0 +1,34 @@
+
+      <!-- <div class="rows"> -->
+          <div class="col-md-4 col-lg-4" *ngIf="selected_meme">
+              <div class="card border-0">
+                <a class="lightbox" href={{selected_meme.url}}>
+                  <img src={{selected_meme.url}} alt="Card Image" class="card-img-top">
+                </a>
+              </div>
+          </div>
+          <div class="col-md-4 col-lg-4">
+            <!-- <form> -->
+              <div class="form-group">
+                <label for="top_text">TOP TEXT:</label>
+                <input type="text" class="form-control" [(ngModel)]="top_text">
+              </div>
+              <div class="form-group">
+                <label for="bottom_text">BOTTOM TEXT:</label>
+                <input type="text" class="form-control" [(ngModel)]="bottom_text">
+              </div>
+              <div class="form-group">
+                <button type="button" class="btn btn-default" (click)="generateMeme()" [disabled]="!isValid()">Generate meme</button>
+              </div>
+            <!-- </form> -->
+            </div>
+            <div class="col-md-4 col-lg-4" *ngIf="show_converted_meme">
+                <div class="card border-0">
+                  <a class="lightbox" href={{converted_meme.url}} target="_blank">
+                    <img src={{converted_meme.url}} alt="Card Image" class="card-img-top">
+                  </a>
+                </div>
+            </div>
+        <!-- </div> -->
+
+        
