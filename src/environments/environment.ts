@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
   API_URL: ' https://api.imgflip.com',
-  uname: 'amkoba',
-  pwd: 'koba@420'
+  uname: 'USERNAME',
+  pwd: 'PASSWORD'
 };
 
 /*
