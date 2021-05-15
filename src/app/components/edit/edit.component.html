@@ -3,22 +3,18 @@
           <div class="col-md-4 col-lg-4" *ngIf="selected_meme">
               <div class="card border-0">
                 <a class="lightbox" href={{selected_meme.url}}>
-                  <img src={{selected_meme.url}} alt="Card Image" class="card-img-top">
+                  <img src={{selected_meme.url}} alt="Card Image" class="img-fluid">
                 </a>
               </div>
           </div>
+
           <div class="col-md-4 col-lg-4">
             <!-- <form> -->
-              <div class="form-group">
-                <label for="top_text">TOP TEXT:</label>
-                <input type="text" class="form-control" [(ngModel)]="top_text">
+              <div class="form-group" *ngFor="let text_count of box_counts">
+                <input type="text" class="form-control" [(ngModel)]="text_count.text" [placeholder]="text_count.placeHolder">
               </div>
               <div class="form-group">
-                <label for="bottom_text">BOTTOM TEXT:</label>
-                <input type="text" class="form-control" [(ngModel)]="bottom_text">
-              </div>
-              <div class="form-group">
-                <button type="button" class="btn btn-default" (click)="generateMeme()" [disabled]="!isValid()">Generate meme</button>
+                <button type="button" class="btn btn-secondary" (click)="generateMeme()">Generate meme</button>
               </div>
             <!-- </form> -->
             </div>

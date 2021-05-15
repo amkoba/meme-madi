@@ -11,12 +11,14 @@ import { Form } from '@angular/forms';
 export class EditComponent implements OnInit {
 
   constructor(private generate_service: MainService) { }
-  @Input() selected_meme;
   @Input() show_converted_meme;
+  selected_meme;
   converted_meme;
   top_text: string;
   bottom_text: string;
+  box_counts = [];
   ngOnInit() {
+   
   }
 
   generateMeme(){
@@ -24,14 +26,28 @@ export class EditComponent implements OnInit {
     data.append('template_id', this.selected_meme.id);
     data.append('username', environment.uname);
     data.append('password', environment.pwd);
-    data.append('text0', this.top_text);
-    data.append('text1', this.bottom_text);
+    this.box_counts.forEach((mem_text, index) => {
+      data.append('text'+index, mem_text.text);  
+    })
 
-  this.generate_service.generateMeme(data).subscribe(res => {
-    console.log('Results ' + JSON.stringify(res));
-    this.converted_meme = res['data'];
+  this.generate_service.generateMeme(data).subscribe((res: any) => {
+    if(!!res['success']) {
+      this.converted_meme = res['data'];
     this.show_converted_meme = true;
+    }else {
+      alert('Something went wrogn. Please try again')
+    }
+    
   })
+  }
+
+  initSelectedMeme(meme){
+    this.box_counts = [];
+    this.selected_meme = meme;
+    this.show_converted_meme = false;
+    for(let i =0; i< this.selected_meme.box_count; i++){
+      this.box_counts.push({box_count: this.selected_meme.box_count, placeHolder: 'Text #'+i, text: ''})
+    }
   }
 
   isValid(){

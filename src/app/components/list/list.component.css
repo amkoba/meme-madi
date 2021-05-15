@@ -1,0 +1,14 @@
+.navbar {
+    background-color: #F97300;
+}
+
+.navbar-collapse {
+    justify-content: flex-end;
+}
+.navbar-nav .nav-link, .navbar-brand {
+    color: #fff;
+}
+
+.gallery-block.cards-gallery {
+    margin-top: 60px;;
+}
